@@ -329,6 +329,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'Issafalcon/lsp-overloads.nvim',
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -450,6 +451,11 @@ require('lazy').setup({
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, '[T]oggle Inlay [H]ints')
+          end
+
+          --- Guard against servers without the signatureHelper capability
+          if client.server_capabilities.signatureHelpProvider then
+            require('lsp-overloads').setup(client, {})
           end
         end,
       })
