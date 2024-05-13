@@ -536,6 +536,11 @@ require('lazy').setup({
         'eslint_d',
         'typescript-language-server',
         'prettier',
+        'bash-language-server',
+        'json-lsp',
+        'jsonlint',
+        'docker-compose-language-service',
+        'dockerfile-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -814,8 +819,8 @@ require('lazy').setup({
   --
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
-  -- require 'kickstart.plugins.debug',
+
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
