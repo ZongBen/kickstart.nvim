@@ -457,6 +457,7 @@ require('lazy').setup({
 
           --- Guard against servers without the signatureHelper capability
           if client.server_capabilities.signatureHelpProvider then
+            ---@diagnostic disable-next-line: missing-fields
             require('lsp-overloads').setup(client, {})
           end
         end,
