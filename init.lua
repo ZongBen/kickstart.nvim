@@ -457,8 +457,13 @@ require('lazy').setup({
 
           --- Guard against servers without the signatureHelper capability
           if client.server_capabilities.signatureHelpProvider then
+            vim.keymap.set('n', '<A-s>', ':LspOverloadsSignature<CR>', { buffer = event.buf, desc = 'LSP: ' .. 'Show [S]ignature' })
+            vim.keymap.set('i', '<A-s>', '<cmd>LspOverloadsSignature<CR>', { buffer = event.buf, desc = 'LSP: ' .. 'Show [S]ignature' })
+
             ---@diagnostic disable-next-line: missing-fields
-            require('lsp-overloads').setup(client, {})
+            require('lsp-overloads').setup(client, {
+              display_automatically = false,
+            })
           end
         end,
       })
